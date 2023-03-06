@@ -3,7 +3,7 @@
     {% block title %}Последние обновления на сайте{% endblock %}
     {% block content %}
     <h1>Последние обновления на сайте</h1>
-    {% cache 20 index_page, page_obj %}
+    {% cache 20 index_page page_obj %}
     {% for post in page_obj %}
     {% include 'includes/template_index.html' %}
     {% include 'posts/includes/switcher.html' %}    

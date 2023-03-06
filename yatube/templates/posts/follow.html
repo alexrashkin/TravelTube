@@ -2,7 +2,7 @@
 {% block title %}Посты по подписке{% endblock %}
 {% block content %}
 <h1>Посты по подписке</h1>
-{% for post in posts %}
+{% for post in page_obj %}
 {% include 'includes/template_index.html' %}   
 {% include 'posts/includes/switcher.html' %} 
 {% if post.group %}   

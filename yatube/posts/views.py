@@ -102,8 +102,9 @@ def add_comment(request, post_id):
 def follow_index(request):
     template = 'posts/follow.html'
     posts = Post.objects.filter(author__following__user=request.user)
+    page_obj = make_pages(request, posts, NUMBER_POSTS)
     context = {
-        'posts': posts,
+        'page_obj': page_obj,
         'follow': True,
     }
     return render(request, template, context)

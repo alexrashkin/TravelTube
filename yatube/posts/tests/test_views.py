@@ -185,7 +185,7 @@ class PostFormTests(TestCase):
         # Проверяем отображение картинки на отдельной странице поста
         response = self.author_client.get(reverse(
             'posts:post_detail', kwargs={'post_id': self.post.pk}))
-        obj = response.context["post"]
+        obj = response.context["page_obj"]
         self.assertEqual(obj.image, self.post.image)
 
     def test_comment_on_post_detail_page(self):
@@ -216,32 +216,33 @@ class PostFormTests(TestCase):
     def test_following(self):
         # Проверяем, что посты у подписчиков добавляются
         response = self.follower_client.get(reverse("posts:follow_index"))
-        count_follower = len(response.context["posts"])
+        count_follower = len(response.context["page_obj"])
         response = self.no_follower_client.get(reverse("posts:follow_index"))
-        count_no_follower = len(response.context["posts"])
+        count_no_follower = len(response.context["page_obj"])
         Post.objects.create(
             text='new post for follower',
             author=self.user
         )
         response = self.follower_client.get(reverse("posts:follow_index"))
-        self.assertEqual(len(response.context["posts"]), count_follower + 1)
+        self.assertEqual(len(response.context["page_obj"]), count_follower + 1)
         response = self.no_follower_client.get(reverse("posts:follow_index"))
-        self.assertEqual(len(response.context["posts"]), count_no_follower)
+        self.assertEqual(len(response.context["page_obj"]), count_no_follower)
 
     def test_unfollowing(self):
         # Проверяем возможность отписаться и подписаться
         response = self.follower_client.get(reverse("posts:follow_index"))
-        count_follower = len(response.context["posts"])
+        count_follower = len(response.context["page_obj"])
         response = self.follower_client.get(reverse("posts:profile_unfollow",
                                             kwargs={'username': self.user}))
         response = self.follower_client.get(reverse("posts:follow_index"))
-        self.assertEqual(len(response.context["posts"]), count_follower - 1)
+        self.assertEqual(len(response.context["page_obj"]), count_follower - 1)
         response = self.no_follower_client.get(reverse("posts:follow_index"))
-        count_no_follower = len(response.context["posts"])
+        count_no_follower = len(response.context["page_obj"])
         response = self.no_follower_client.get(reverse("posts:profile_follow",
                                                kwargs={'username': self.user}))
         response = self.no_follower_client.get(reverse("posts:follow_index"))
-        self.assertEqual(len(response.context["posts"]), count_no_follower + 1)
+        self.assertEqual(len(response.context["page_obj"]),
+                         count_no_follower + 1)
 
 
 class PaginatorViewsTest(TestCase):
