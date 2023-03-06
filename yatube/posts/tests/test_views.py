@@ -185,7 +185,7 @@ class PostFormTests(TestCase):
         # Проверяем отображение картинки на отдельной странице поста
         response = self.author_client.get(reverse(
             'posts:post_detail', kwargs={'post_id': self.post.pk}))
-        obj = response.context["page_obj"]
+        obj = response.context["post"]
         self.assertEqual(obj.image, self.post.image)
 
     def test_comment_on_post_detail_page(self):
