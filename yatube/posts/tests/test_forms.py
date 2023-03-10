@@ -110,3 +110,5 @@ class PostFormTests(TestCase):
         post_object = Post.objects.get(id=self.post.pk)
         self.assertEqual(post_object.group.id, form_data['group'])
         self.assertEqual(post_object.text, form_data['text'])
+        self.assertEqual(post_object.image.name,
+                         'posts/' + form_data.get('image').name)

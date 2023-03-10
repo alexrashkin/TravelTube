@@ -32,7 +32,7 @@ class PostFormTests(TestCase):
         )
 
     def setUp(self):
-        # Создаём клиент автора поста
+        # Создаём клиенты
         self.author_client = Client()
         self.authorized_client = Client()
         self.follower_client = Client()
@@ -213,7 +213,7 @@ class PostFormTests(TestCase):
         response3 = self.authorized_client.get(reverse("posts:index"))
         self.assertNotEqual(response1.content, response3.content)
 
-    def test_following(self):
+    def test_amount_of_posts(self):
         # Проверяем, что посты у подписчиков добавляются
         response = self.follower_client.get(reverse("posts:follow_index"))
         count_follower = len(response.context["page_obj"])
@@ -228,21 +228,38 @@ class PostFormTests(TestCase):
         response = self.no_follower_client.get(reverse("posts:follow_index"))
         self.assertEqual(len(response.context["page_obj"]), count_no_follower)
 
+    def test_following(self):
+        # Проверяем, что можно подписаться
+        response_follow = self.no_follower_client.get(reverse(
+            "posts:follow_index"))
+        self.assertEqual(response_follow.context.get(
+            "page_obj").paginator.count, 0)
+        response_follow = self.no_follower_client.get(reverse(
+            "posts:profile_follow", kwargs={'username': self.user}))
+        response_follow = self.no_follower_client.get(reverse(
+            "posts:follow_index"))
+        self.assertEqual(response_follow.context.get(
+            "page_obj").paginator.count, 1)
+
     def test_unfollowing(self):
-        # Проверяем возможность отписаться и подписаться
-        response = self.follower_client.get(reverse("posts:follow_index"))
-        count_follower = len(response.context["page_obj"])
-        response = self.follower_client.get(reverse("posts:profile_unfollow",
-                                            kwargs={'username': self.user}))
-        response = self.follower_client.get(reverse("posts:follow_index"))
-        self.assertEqual(len(response.context["page_obj"]), count_follower - 1)
-        response = self.no_follower_client.get(reverse("posts:follow_index"))
-        count_no_follower = len(response.context["page_obj"])
-        response = self.no_follower_client.get(reverse("posts:profile_follow",
-                                               kwargs={'username': self.user}))
-        response = self.no_follower_client.get(reverse("posts:follow_index"))
-        self.assertEqual(len(response.context["page_obj"]),
-                         count_no_follower + 1)
+        # Проверяем, что можно отписаться
+        response_follow = self.follower_client.get(reverse(
+            "posts:follow_index"))
+        self.assertEqual(response_follow.context.get(
+            "page_obj").paginator.count, 1)
+        response_follow = self.follower_client.get(reverse(
+            "posts:profile_unfollow", kwargs={'username': self.user}))
+        response_follow = self.follower_client.get(reverse(
+            "posts:follow_index"))
+        self.assertEqual(response_follow.context.get(
+            "page_obj").paginator.count, 0)
+
+    def test_no_self_follow(self):
+        # Проверяем невозможность подписаться на самого себя
+        self.authorized_client.get(reverse(
+            "posts:profile_follow", kwargs={'username': self.user}))
+        self.assertFalse(Follow.objects.filter(
+            user=self.user, author=self.user).exists())
 
 
 class PaginatorViewsTest(TestCase):
