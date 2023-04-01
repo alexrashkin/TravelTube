@@ -30,12 +30,11 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '[::1]',
     'testserver',
-    'www.t701or.pythonanywhere.com',
-    't701or.pythonanywhere.com',
+    'www.r100aa.pythonanywhere.com',
+    'r100aa.pythonanywhere.com',
 ]
 
 # Application definition
-
 INSTALLED_APPS = [
     'about.apps.AboutConfig',
     'core.apps.CoreConfig',

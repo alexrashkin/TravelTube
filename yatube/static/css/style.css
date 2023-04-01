@@ -9,9 +9,9 @@ body {
 
 .post-detail-article {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: baseline;
-    padding-inline: 0px;
+    padding-inline: 180px;
 }
 
 .post-detail-article > p {
@@ -25,7 +25,7 @@ body {
 
 .post-image {
     width: 800px;
-    border-radius: calc(0.25rem - 1px);
+    border-radius: calc(0.9rem - 1px);
     max-width: 800px;
     vertical-align: super;
 }
@@ -44,9 +44,9 @@ body {
 }
 
 .post-text {
-    align-self: self-left;
-    width:1200px;
-    margin: 10px 10px 10px 70px!important;
+    align-self: auto;
+    width:840px;
+    margin: 10px 10px 10px 0px!important;
 
 }
 
@@ -65,7 +65,26 @@ body {
     text-align: center;
     margin-top: 30px;
     color: #3291e7
-} 
+}
+
+
+.main {
+    padding-inline: 50px
+}
+
+.author {
+    padding-inline: 30px!important;
+}
+
+.technologies {
+    padding-inline: 30px!important;
+}
+
+
+.card-img {
+    border-radius: calc(0.9rem - 1px);
+    width: 100%;
+}
 
 .post-container > p > img {
     max-width: 800px;
@@ -88,6 +107,14 @@ body {
     transition-duration: 500ms;
 }
 
+.my_nav {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    /*calc*/
+}
 
 .post-container > div > ul > li:hover {
     background: hwb(93 13% 35%);
@@ -106,7 +133,7 @@ body {
 
 .common-container {
     max-width: 800px;
-    margin: 10px 10px 10px 400px!important;
+    margin: 10px 10px 10px 550px!important;
 }
 
 .container > ul {
@@ -123,7 +150,4 @@ body {
 .container > p {
     max-width: 1140px;
     padding-left: 0px;
-}
-.mb-5 {
-    height: 15px;
 }
