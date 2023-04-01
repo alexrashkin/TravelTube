@@ -1,0 +1,129 @@
+@font-face {
+    font-family: '3938-font';
+    src: url('/static/fonts/3938-font.otf');
+}
+body {
+    font-family: '3938-font', sans-serif;
+    background-color: #deeef8
+}
+
+.post-detail-article {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: baseline;
+    padding-inline: 0px;
+}
+
+.post-detail-article > p {
+    margin-top: 30px;
+    align-self: flex-start;
+}
+
+.post-detail-article > img {
+    width: 800px;
+}
+
+.post-image {
+    width: 800px;
+    border-radius: calc(0.25rem - 1px);
+    max-width: 800px;
+    vertical-align: super;
+}
+
+.post-image:nth-child(n+3) {
+    margin-top: 0px;
+}
+
+.post-image:nth-child(odd) {
+    margin-right: 0px;
+}
+
+.post-image:nth-child(even)::after {
+    content: '';
+    width: 100%;
+}
+
+.post-text {
+    align-self: self-left;
+    width:1200px;
+    margin: 10px 10px 10px 70px!important;
+
+}
+
+.img-container {
+    max-width: 800px;
+    float: left;
+    margin: 3px 10px 10px 25px!important;
+}
+
+.main-container {
+    width: 100%;
+    padding-inline: 50px;
+}
+
+.main-container > h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #3291e7
+} 
+
+.post-container > p > img {
+    max-width: 800px;
+    float: left;
+    margin: 0px 10px 55px 295px!important;
+}
+
+.post-container > .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-container > div > ul > li > a {
+    border: 1px solid royalblue!important;
+    border-radius: calc(0.25rem - 1px);
+}
+
+.post-container > div > ul > li {
+    margin-right: 10px;
+    transition-duration: 500ms;
+}
+
+
+.post-container > div > ul > li:hover {
+    background: hwb(93 13% 35%);
+    box-shadow: 1px 1px 4px;
+}
+
+
+.post-container > ul {
+    list-style: none;
+    padding: unset;
+}
+
+.post-container > ul > li::before {
+    content: ">";
+}
+
+.common-container {
+    max-width: 800px;
+    margin: 10px 10px 10px 400px!important;
+}
+
+.container > ul {
+    flex-direction: reverse;
+}
+
+.container > ul > li:hover {
+    background: #350750ab;
+    box-shadow: 5px 4px 3px;
+    color: rgb(12, 190, 161);
+    transition-duration: 200ms;
+}
+
+.container > p {
+    max-width: 1140px;
+    padding-left: 0px;
+}
+.mb-5 {
+    height: 15px;
+}

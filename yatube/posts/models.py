@@ -36,6 +36,10 @@ class Post(CreatedModel):
         upload_to='posts/',
         blank=True
     )
+    images = models.ManyToManyField(
+        'Image',
+        through='PostImage'
+    )
 
     class Meta:
         ordering = ('-pub_date',)
@@ -44,6 +48,15 @@ class Post(CreatedModel):
 
     def __str__(self):
         return self.text[:15]
+
+
+class Image(models.Model):
+    Image = models.ImageField(upload_to='images/')
+
+
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
 
 
 class Comment(CreatedModel):

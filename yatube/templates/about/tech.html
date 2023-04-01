@@ -1,29 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Технологии проекта{% endblock %}
 {% block content %}
-{% comment %} Колонки с отступом сверху и снизу {% endcomment %}
-<div class="row">
-  <h1>Вот что я умею</h1>
-  {% comment %}
-    Боковой блок со списком технологий 
-    Займет всю ширину блока на мобильном
-    и 25% при размерах экрана ≥768px
-  {% endcomment %}
-  <aside class="col-12 col-md-3">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        Python
-      </li>
-      <li class="list-group-item">
-        Django
-      </li>
-    </ul>
-  </aside>
-  {% comment %}
-    Статья  
-    Займет всю ширину блока на мобильном
-    и 75% при размерах экрана ≥768px
-  {% endcomment %}
-  <article class="col-12 col-md-9">
-    <p>Страница будет наполнена информацией в ближайшие дни</p>
-  </article>
-</div>
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Технологии проекта</title>
+</head>
+<body>
+	<header>
+		<h1>Технологии, которые были применены при разработке:</h1>
+	</header>
+	<main>
+    <section>
+			<h2 style="text-indent:150px">Python</h2><p><img src="{% static 'img/python.png' %}"></p>
+			<p> Высокоуровневый язык программирования общего назначения с
+         динамической строгой типизацией и автоматическим управлением памятью,<br>
+         ориентированный на повышение производительности разработчика,
+         читаемости кода и его качества, а также на обеспечение
+         переносимости написанных на нём программ.</p>
+		</section>
+		<section>
+			<h2 style="text-indent:150px">Django</h2><p><img src="{% static 'img/django.png' %}"></p>
+			<p>Фреймворк Python для веб-разработки, который позволяет быстро
+        создавать масштабируемые и безопасные приложения.</p>
+		</section>
+		<section>
+			<h2 style="text-indent:150px">HTML</h2><p><img src="{% static 'img/html.png' %}"></p>
+			<p>Язык разметки для создания веб-страниц и приложений.</p>
+		</section>
+		<section>
+			<h2 style="text-indent:150px">CSS</h2><p><img src="{% static 'img/css.png' %}"></p>
+			<p>Язык стилей, используемый для оформления веб-страниц и приложений.</p>
+		</section>
+		<section>
+			<h2 style="text-indent:150px">Git</h2><p><img src="{% static 'img/git.png' %}"></p>
+			<p>Система контроля версий, используемая для отслеживания изменений в
+        коде проекта и совместной работы над ним.</p> 
+		</section>
+	</main>
+</body>
+</html>
 {% endblock %}

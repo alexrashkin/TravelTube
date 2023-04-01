@@ -1,9 +1,14 @@
 from django.contrib import admin
 
-from .models import Group, Post, Comment, Follow
+from .models import Group, Post, PostImage, Comment, Follow
+
+
+class PostImagesAdmin(admin.StackedInline):
+    model = PostImage
 
 
 class PostAdmin(admin.ModelAdmin):
+    inlines = [PostImagesAdmin]
     list_display = (
         'pk',
         'text',
@@ -16,6 +21,14 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('text',)
     list_filter = ('pub_date',)
     empty_value_display = '-пусто-'
+
+
+@admin.register(PostImage)
+class PostImagesAdmin(admin.ModelAdmin):
+    list_display = (
+        'image',
+        'post',
+    )
 
 
 admin.site.register(Post, PostAdmin)

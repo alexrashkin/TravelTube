@@ -5,7 +5,7 @@ from posts.services import make_pages
 from yatube.settings import NUMBER_POSTS
 
 from .forms import PostForm, CommentForm
-from .models import Group, Post, User, Follow
+from .models import Group, Post, User, Follow, Image, PostImage
 
 
 def index(request):
@@ -60,12 +60,23 @@ def post_detail(request, post_id):
 
 @login_required
 def create_post(request):
-    form = PostForm(request.POST or None, files=request.FILES or None)
+    form = PostForm(request.POST, request.FILES)
     if form.is_valid():
         post = form.save(commit=False)
         post.author = request.user
         post.save()
+        # Обработка множественных изображений
+        images = request.FILES.getlist('images')
+        # Получение списка изображений
+        for image_file in images:
+            image = Image(Image=image_file)
+            image.save()
+            # Сохранение объекта Image
+            post_image = PostImage(post=post, image=image)
+            post_image.save()
         return redirect('posts:profile', username=post.author.username)
+    else:
+        print(form.errors)
     return render(request, 'posts/create_post.html',
                   {'form': form})
 
