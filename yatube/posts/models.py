@@ -1,6 +1,9 @@
-from core.models import CreatedModel
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from django.db import models
+from PIL import Image as PilImage
+
+from core.models import CreatedModel
 
 User = get_user_model()
 
@@ -17,6 +20,11 @@ class Group(models.Model):
 class Post(CreatedModel):
     text = models.TextField(verbose_name='Текст поста',
                             help_text='Введите текст поста')
+    image = models.ImageField(
+        verbose_name='Аватар поста',
+        upload_to='posts/',
+        blank=False,
+    )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -30,11 +38,6 @@ class Post(CreatedModel):
         related_name='posts',
         verbose_name='Группа',
         help_text='Группа, к которой будет относиться пост'
-    )
-    image = models.ImageField(
-        'Картинка',
-        upload_to='posts/',
-        blank=True
     )
     images = models.ManyToManyField(
         'Image',
@@ -53,10 +56,22 @@ class Post(CreatedModel):
 class Image(models.Model):
     Image = models.ImageField(upload_to='images/')
 
+    def clean(self):
+        super().clean()
+        img = PilImage.open(self.image)
+        if img.format not in ('JPEG', 'WEBP', 'PNG'):
+            raise ValidationError('Недопустимый формат файла. Поддерживаются только JPEG, WEBP и PNG.')
+
 
 class PostImage(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
+
+    def clean(self):
+        super().clean()
+        img = PilImage.open(self.image)
+        if img.format not in ('JPEG', 'WEBP', 'PNG'):
+            raise ValidationError('Недопустимый формат файла. Поддерживаются только JPEG, WEBP и PNG.')
 
 
 class Comment(CreatedModel):

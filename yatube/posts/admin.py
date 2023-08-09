@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
-from .models import Group, Post, PostImage, Comment, Follow
+from .models import Comment, Follow, Group, Post, PostImage
 
 
 class PostImagesAdmin(admin.StackedInline):
@@ -15,8 +16,14 @@ class PostAdmin(admin.ModelAdmin):
         'pub_date',
         'author',
         'group',
-        'image'
+        'image_show'
     )
+    def image_show(self, obj):
+        if obj.image:
+            return mark_safe("<img src='{}' width='60' />".format(obj.image.url))
+        return None
+
+    image_show.__name__="Картинка"
     list_editable = ('group',)
     search_fields = ('text',)
     list_filter = ('pub_date',)

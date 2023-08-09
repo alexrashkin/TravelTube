@@ -30,8 +30,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '[::1]',
     'testserver',
-    'www.r100aa.pythonanywhere.com',
-    'r100aa.pythonanywhere.com',
+    'www.c393ox.pythonanywhere.com',
+    'c393ox.pythonanywhere.com',
 ]
 
 # Application definition
@@ -141,7 +141,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media')
 ]
 
-NUMBER_POSTS = 10
+NUMBER_POSTS = 5
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'posts:index'

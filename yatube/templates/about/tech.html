@@ -2,44 +2,64 @@
 {% block title %}Технологии проекта{% endblock %}
 {% block content %}
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<div class="technologies">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Технологии проекта</title>
+	<style>
+		section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
 </head>
 <body>
 	<header>
-		<h1>Технологии, которые были применены при разработке:</h1>
+		<br>
+		<h1 style="color:#196c7c; text-indent: 50px;"><b>Технологии проекта:</b></h1>
 	</header>
 	<main>
-    <section>
-			<h2 style="text-indent:150px">Python</h2><p><img src="{% static 'img/python.png' %}"></p>
-			<p> Высокоуровневый язык программирования общего назначения с
-         динамической строгой типизацией и автоматическим управлением памятью,<br>
-         ориентированный на повышение производительности разработчика,
-         читаемости кода и его качества, а также на обеспечение
-         переносимости написанных на нём программ.</p>
-		</section>
 		<section>
-			<h2 style="text-indent:150px">Django</h2><p><img src="{% static 'img/django.png' %}"></p>
-			<p>Фреймворк Python для веб-разработки, который позволяет быстро
-        создавать масштабируемые и безопасные приложения.</p>
+			<h2><img src="{% static 'img/python.png' %}"> Python</h2>
+			<h4>Высокоуровневый язык программирования общего назначения с
+				динамической строгой типизацией и автоматическим управлением памятью,
+				ориентированный на</h4>
+			<h4>повышение производительности разработчика,
+				читаемости кода и его качества, а также на обеспечение
+				переносимости написанных на нём программ.</h4>
 		</section>
+		<br>
 		<section>
-			<h2 style="text-indent:150px">HTML</h2><p><img src="{% static 'img/html.png' %}"></p>
-			<p>Язык разметки для создания веб-страниц и приложений.</p>
+			<h2><img src="{% static 'img/django.png' %}"> Django</h2>
+			<h4>Фреймворк Python для веб-разработки, который позволяет быстро
+				создавать масштабируемые и безопасные приложения.</h4>
 		</section>
+		<br>
 		<section>
-			<h2 style="text-indent:150px">CSS</h2><p><img src="{% static 'img/css.png' %}"></p>
-			<p>Язык стилей, используемый для оформления веб-страниц и приложений.</p>
+			<h2><img src="{% static 'img/git.png' %}"> Git</h2>
+			<h4>Система контроля версий, используемая для отслеживания изменений в
+				коде проекта и совместной работы над ним.</h4>
 		</section>
+		<br>
 		<section>
-			<h2 style="text-indent:150px">Git</h2><p><img src="{% static 'img/git.png' %}"></p>
-			<p>Система контроля версий, используемая для отслеживания изменений в
-        коде проекта и совместной работы над ним.</p> 
+			<h2><img src="{% static 'img/css.png' %}"> CSS</h2>
+			<h4>Язык стилей, используемый для оформления веб-страниц и приложений.</h4>
 		</section>
+		<br>
+		<section>
+			<h2><img src="{% static 'img/html.png' %}">HTML</h2>
+			<h4>Язык разметки для создания веб-страниц и приложений.</h4>
+		</section>
+		<br>
 	</main>
 </body>
 </html>

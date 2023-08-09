@@ -1,6 +1,9 @@
-  {% extends 'base.html' %}
-  {% block title %}{{ group.title }}{% endblock %}
-  {% block content %}
+{% extends 'base.html' %}
+{% block title %}{{ group.title }}{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="group_name">
+  <br>
   <h1>{{ group.title }}</h1>
   <p>{{ group.description }}</p>
   {% for post in page_obj %}
@@ -8,13 +11,18 @@
   {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
   {% include 'posts/includes/paginator.html' %}
-      </div>
-  {% endblock %}  
-    </main>
-    <footer class="page-footer font-small blue border-top">
-      <div class="footer-copyright text-center py-3">© 2023 Copyright 
-        <p><span style="color:red">Ya</span>tube</p> 
-      </div>    
-    </footer>
-  </body>
+</div>
+{% endblock %}
+{% block head %}
+{{ block.super }}
+{% endblock %}
+<main class="container">
+  <footer class="page-footer font-small blue border-top">
+    <div class="footer-copyright text-center py-3">
+      © 2023 Copyright 
+      <p><span style="color:red">Ya</span>tube</p> 
+    </div>    
+  </footer>
+</main>
+</body>
 </html>

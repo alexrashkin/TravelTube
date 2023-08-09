@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from posts.services import make_pages
 from yatube.settings import NUMBER_POSTS
 
-from .forms import PostForm, CommentForm
-from .models import Group, Post, User, Follow, Image, PostImage
+from .forms import CommentForm, PostForm
+from .models import Follow, Group, Image, Post, PostImage, User
 
 
 def index(request):

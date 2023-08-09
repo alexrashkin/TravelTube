@@ -2,6 +2,7 @@
 {% block title %} {{ post.text }} {{ post_selected|truncatechars:30 }}
 {% endblock %}
 {% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% load user_filters %}
   <div class="row">
     <aside class="col-12 col-md-3">
@@ -32,12 +33,13 @@
       </ul>
     </aside>
     <article class="col-12 col-md-9 post-detail-article">
+      <div class="new_class">
       <div class="picture">
       <img class="card-img my-2" src="{{ post.image.url }}">
       <div class="img-container">
         {% if post.images.all %}
           {% for post_image in post.images.all %}
-            <img class="post-image" src="{{ post_image.Image.url }}" alt="{{ post.title }}">
+            <img class="post-image fixed-width" src="{{ post_image.Image.url }}" alt="{{ post.title }}">
           {% endfor %}
         {% endif %}
       </div>
