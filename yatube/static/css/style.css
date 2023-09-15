@@ -181,6 +181,10 @@ body {
     text-align: center;
 }
 
+.custom-footer {
+    border-top: 0px;
+}
+
 @media (max-width: 768px) {
     /* стили для экранов с максимальной шириной 768px */
     body {
