@@ -10,11 +10,13 @@ urlpatterns = [
     path('', include('posts.urls', namespace='posts')),
     path('admin/', admin.site.urls),
     path('about/', include('about.urls', namespace='about')),
-    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
-] + static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-    )
+    re_path(r'^media/(?P<path>.*)$',
+            serve,
+            {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$',
+            serve,
+            {'document_root': settings.STATIC_ROOT}),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'core.views.page_not_found'
 if settings.DEBUG:

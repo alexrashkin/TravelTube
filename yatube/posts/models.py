@@ -1,9 +1,8 @@
+from core.models import CreatedModel
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 from PIL import Image as PilImage
-
-from core.models import CreatedModel
 
 User = get_user_model()
 
@@ -60,7 +59,10 @@ class Image(models.Model):
         super().clean()
         img = PilImage.open(self.image)
         if img.format not in ('JPEG', 'WEBP', 'PNG'):
-            raise ValidationError('Недопустимый формат файла. Поддерживаются только JPEG, WEBP и PNG.')
+            raise ValidationError(
+                'Недопустимый формат файла. '
+                'Поддерживаются только JPEG, WEBP и PNG.'
+            )
 
 
 class PostImage(models.Model):
@@ -71,7 +73,10 @@ class PostImage(models.Model):
         super().clean()
         img = PilImage.open(self.image)
         if img.format not in ('JPEG', 'WEBP', 'PNG'):
-            raise ValidationError('Недопустимый формат файла. Поддерживаются только JPEG, WEBP и PNG.')
+            raise ValidationError(
+                'Недопустимый формат файла. '
+                'Поддерживаются только JPEG, WEBP и PNG.'
+            )
 
 
 class Comment(CreatedModel):
