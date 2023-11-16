@@ -3,7 +3,7 @@
     {% block title %}Последние обновления на сайте{% endblock %}
     {% block content %}
     <div class="main-container">
-        <h1><b>Последние обновления на сайте</b></h1>
+        <h1 style="font-size: 31px; text-transform: uppercase; font-style: italic; color:#4169E1;">Последние обновления на сайте</h1>
         {% cache 20 index_page page_obj %}
         {% for post in page_obj %}
             {% include 'includes/template_index.html' %}
