@@ -57,4 +57,5 @@ python3 manage.py migrate
 ```
 python3 manage.py runserver
 ```
-Автор - Александр Рашкин (https://github.com/alexrashkin)
+Автор: 
+- Александр Рашкин  - https://github.com/alexrashkin
