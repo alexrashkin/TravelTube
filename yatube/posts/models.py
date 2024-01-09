@@ -1,8 +1,9 @@
-from core.models import CreatedModel
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 from PIL import Image as PilImage
+
+from core.models import CreatedModel
 
 User = get_user_model()
 

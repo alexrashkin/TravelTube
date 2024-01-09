@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
-from posts.services import make_pages
 
+from posts.services import make_pages
 from yatube.settings import NUMBER_POSTS
 
 from .forms import CommentForm, PostForm
