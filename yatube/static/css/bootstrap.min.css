@@ -43,6 +43,8 @@
 
 body {
     margin: 0;
+    margin-left: 180px;
+    margin-right: 180px;
     font-family: var(--bs-font-sans-serif);
     font-size: 1rem;
     font-weight: 400;
@@ -194,12 +196,12 @@ sup {
 }
 
 a {
-    color: #0d6efd;
-    text-decoration: underline
+    color: rgb(10, 124, 158);
+    text-decoration: underline;
 }
 
 a:hover {
-    color: #0a58ca
+    color: rgb(87, 101, 105);
 }
 
 a:not([href]):not([class]),a:not([href]):not([class]):hover {
@@ -322,10 +324,6 @@ select:disabled {
     display: none
 }
 
-[type=button],[type=reset],[type=submit],button {
-    -webkit-appearance: button
-}
-
 [type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled) {
     cursor: pointer
 }
@@ -371,11 +369,6 @@ legend+* {
 
 ::-webkit-inner-spin-button {
     height: auto
-}
-
-[type=search] {
-    outline-offset: -2px;
-    -webkit-appearance: textfield
 }
 
 ::-webkit-search-decoration {
@@ -2338,8 +2331,6 @@ textarea.form-control-lg {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    -webkit-print-color-adjust: exact;
-    color-adjust: exact
 }
 
 .form-check-input[type=checkbox] {
@@ -4387,7 +4378,6 @@ textarea.form-control-lg {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem
@@ -4702,8 +4692,44 @@ textarea.form-control-lg {
     display: flex;
     padding-left: 0;
     list-style: none;
-    justify-content:center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px; /* Скругленные углы для контейнера пагинации */
 }
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #3c628b;
+    background-color: #8cb2d7; /* Серый фон для кнопок */
+    border: none; /* Убираем границу */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень при наведении */
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для активной кнопки */
+}
+
+.pagination .disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #ced4da;
+}
+
 
 .page-link {
     position: relative;
@@ -5026,7 +5052,7 @@ textarea.form-control-lg {
     padding: .5rem 1rem;
     color: #212529;
     text-decoration: none;
-    background-color: #fff;
+    background-color: #C1CDCD;
     border: 1px solid rgba(0,0,0,.125)
 }
 
