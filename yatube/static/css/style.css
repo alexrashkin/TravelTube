@@ -204,16 +204,16 @@ body {
 @media (max-width: 480px) {
     /* стили для экранов с максимальной шириной 480px */
     body {
-      font-size: 14px;
+        font-size: 14px;
     }
     header {
-      padding: 5px;
+        padding: 1px;
     }
     main {
-      margin: 5px;
+        margin: 10px;
     }
     footer {
-      padding: 5px;
+        padding: 10px;
     }
 }
 
@@ -222,13 +222,13 @@ body {
     body {
         font-size: 12px;
     }
-      header {
-        padding: 3px;
+    header {
+        padding: 5px;
     }
-      main {
-        margin: 3px;
+    main {
+        margin: 5px;
     }
-      footer {
-        padding: 3px;
+    footer {
+        padding: 5px;
     }
 }

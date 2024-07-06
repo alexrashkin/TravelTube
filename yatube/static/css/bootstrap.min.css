@@ -43,8 +43,6 @@
 
 body {
     margin: 0;
-    margin-left: 180px;
-    margin-right: 180px;
     font-family: var(--bs-font-sans-serif);
     font-size: 1rem;
     font-weight: 400;
@@ -4690,7 +4688,6 @@ textarea.form-control-lg {
 
 .pagination {
     display: flex;
-    padding-left: 0;
     list-style: none;
     justify-content: center;
     padding: 10px;
