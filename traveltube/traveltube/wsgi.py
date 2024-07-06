@@ -1,5 +1,5 @@
 """
-WSGI config for yatube project.
+WSGI config for traveltube project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -13,7 +13,7 @@ from django.core.wsgi import get_wsgi_application
 
 # from whitenoise.django import DjangoWhiteNoise
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yatube.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'traveltube.settings')
 
 application = get_wsgi_application()
 # application = DjangoWhiteNoise(get_wsgi_application())
