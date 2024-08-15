@@ -41,7 +41,7 @@ body {
 .img-container {
     display: block;
     object-fit: cover;
-    width: 145%;
+    width: 113%;
     text-align: left;    
 }
 
@@ -85,7 +85,7 @@ body {
 }
 
 .picture > .card-img {
-    width: 90%;
+    width: 70%;
     text-align: center;
 }
 
